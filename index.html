@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IGCSE Economics (0455) — Course Portal</title>
+  <meta name="description" content="IGCSE Economics (0455) course portal based on the 2026 syllabus. Clean, responsive layout with 6 content tabs." />
+  <style>
+    :root{
+      --navy:#0b2447;
+      --gold:#c59d5f;
+      --muted:#6b7280;
+      --bg:#f7fafc;
+      --card:#ffffff;
+      --radius:12px;
+      --max-width:1100px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:#102a43}
+    .container{max-width:var(--max-width);margin:28px auto;padding:20px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,var(--navy), #153a6b);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    h1{font-size:20px;margin:0}
+    .subtitle{color:var(--muted);font-size:13px}
+
+    nav{margin-top:18px;background:transparent}
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start;margin-top:18px}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}}
+
+    .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 6px 18px rgba(11,36,71,0.06)}
+    .hero .intro h2{margin:0 0 8px 0;font-size:22px}
+    .cta{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn-primary{background:var(--navy);color:white}
+    .btn-ghost{background:transparent;border:1px solid rgba(16,42,67,0.08);color:var(--navy)}
+
+    /* Tabs */
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+    .tab-btn{background:transparent;border:0;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600;color:var(--navy)}
+    .tab-btn[aria-selected="true"]{background:linear-gradient(90deg,var(--navy),#153a6b);color:white}
+
+    /* two-column main */
+    .main{display:grid;grid-template-columns:1fr 300px;gap:18px;margin-top:18px}
+    @media(max-width:900px){.main{grid-template-columns:1fr}}
+
+    .content-section{display:none}
+    .content-section.active{display:block}
+    .section-header{display:flex;align-items:center;gap:12px}
+    .section-icon{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#e6c48e);display:grid;place-items:center;font-weight:700;color:var(--navy)}
+    .subtopics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+    @media(max-width:700px){.subtopics{grid-template-columns:1fr}}
+    .topic-card{background:linear-gradient(180deg,rgba(8,30,58,0.03),rgba(8,30,58,0.01));padding:12px;border-radius:10px}
+
+    /* right sidebar */
+    .sidebar .box{margin-bottom:12px}
+    .small{font-size:13px;color:var(--muted)}
+
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* utility */
+    .muted{color:var(--muted)}
+    a.link{color:var(--navy);text-decoration:none;border-bottom:2px solid rgba(11,36,71,0.06);padding-bottom:2px}
+
+    /* accessible focus */
+    .tab-btn:focus{outline:3px solid rgba(18,82,130,0.14)}
+
+    pre.sample-code{background:#0b1220;color:#cfe8ff;padding:12px;border-radius:8px;overflow:auto}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">E</div>
+        <div>
+          <h1>IGCSE Economics (0455)</h1>
+          <div class="subtitle">Course portal • Based on Cambridge 2026 syllabus</div>
+        </div>
+      </div>
+      <div aria-hidden="true">
+        <button class="btn btn-ghost" onclick="window.open('https://www.cambridgeinternational.org/Images/697154-2026-syllabus.pdf','_blank')">Download syllabus</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="card intro">
+        <h2>Understand markets, policy and global trade</h2>
+        <p class="muted">A focused IGCSE Economics course designed to develop knowledge, analytical skills and real-world understanding. Ideal for years preparing for examination series in 2026.</p>
+        <div class="cta">
+          <button class="btn btn-primary" id="startLearning">Start Learning</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('tab-1').focus()">Explore Topics</button>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Main syllabus tabs">
+          <button class="tab-btn" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">Basic economic problem</button>
+          <button class="tab-btn" role="tab" id="tab-2" aria-controls="panel-2">Resource allocation</button>
+          <button class="tab-btn" role="tab" id="tab-3" aria-controls="panel-3">Decision makers</button>
+          <button class="tab-btn" role="tab" id="tab-4" aria-controls="panel-4">Government & Macroeconomy</button>
+          <button class="tab-btn" role="tab" id="tab-5" aria-controls="panel-5">Economic development</button>
+          <button class="tab-btn" role="tab" id="tab-6" aria-controls="panel-6">Trade & Globalisation</button>
+        </div>
+      </div>
+
+      <aside class="card sidebar">
+        <div class="box">
+          <strong>Exam structure</strong>
+          <div class="small" style="margin-top:6px">Paper 1 — Multiple choice (approx. 30%)<br>Paper 2 — Structured & extended response (approx. 70%)</div>
+        </div>
+        <div class="box">
+          <strong>Key skills</strong>
+          <div class="small" style="margin-top:6px">Data interpretation, evaluation, application of economic theory.</div>
+        </div>
+        <div class="box">
+          <strong>Cambridge syllabus</strong>
+          <div class="small" style="margin-top:6px"><a class="link" href="https://www.cambridgeinternational.org/Images/697154-2026-syllabus.pdf" target="_blank" rel="noopener">Official syllabus (PDF)</a></div>
+        </div>
+      </aside>
+    </section>
+
+    <main class="main">
+      <div>
+        <!-- TAB PANELS -->
+        <section id="panel-1" class="card content-section active" role="tabpanel" aria-labelledby="tab-1">
+          <div class="section-header">
+            <div class="section-icon">⚖️</div>
+            <div>
+              <h3 style="margin:0">The basic economic problem</h3>
+              <div class="small">Scarcity, choice, opportunity cost, factors of production</div>
+            </div>
+          </div>
+
+          <div class="subtopics">
+            <div class="topic-card">
+              <strong>Scarcity & Choice</strong>
+              <div class="small">Finite resources vs unlimited wants; examples for consumers, producers, governments.</div>
+            </div>
+            <div class="topic-card">
+              <strong>Opportunity cost</strong>
+              <div class="small">Definition and applications when making resource allocation decisions.</div>
+            </div>
+            <div class="topic-card">
+              <strong>Factors of production</strong>
+              <div class="small">Land, labour, capital, enterprise — and how they contribute to output.</div>
+            </div>
+            <div class="topic-card">
+              <strong>Production possibility curve</strong>
+              <div class="small">Shape, shifts, points of efficiency and opportunity cost illustrated.</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="panel-2" class="card content-section" role="tabpanel" aria-labelledby="tab-2">
+          <div class="section-header">
+            <div class="section-icon">🧭</div>
+            <div>
+              <h3 style="margin:0">Resource allocation</h3>
+              <div class="small">Demand, supply, market equilibrium, market failure, price controls.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:8px 0">Core concepts</h4>
+            <ul>
+              <li>Demand — determinants and shifts</li>
+              <li>Supply — determinants and shifts</li>
+              <li>Market equilibrium and welfare</li>
+              <li>Externalities and public goods</li>
+              <li>Price controls: ceilings and floors</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="panel-3" class="card content-section" role="tabpanel" aria-labelledby="tab-3">
+          <div class="section-header">
+            <div class="section-icon">🛒</div>
+            <div>
+              <h3 style="margin:0">Microeconomic decision makers</h3>
+              <div class="small">Consumers, workers, firms, banks — incentives and constraints.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:8px 0">Focus areas</h4>
+            <ul>
+              <li>Consumer choice and utility</li>
+              <li>Production costs and firm behaviour</li>
+              <li>Market structures (brief overview)</li>
+              <li>Role of financial institutions</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="panel-4" class="card content-section" role="tabpanel" aria-labelledby="tab-4">
+          <div class="section-header">
+            <div class="section-icon">🏛</div>
+            <div>
+              <h3 style="margin:0">Government & the macroeconomy</h3>
+              <div class="small">Fiscal/monetary policy, inflation, unemployment, economic growth.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:8px 0">Key topics</h4>
+            <ul>
+              <li>Macroeconomic indicators and measurement</li>
+              <li>Fiscal policy: taxation and public spending</li>
+              <li>Monetary policy and central banking</li>
+              <li>Inflation causes & control, unemployment types</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="panel-5" class="card content-section" role="tabpanel" aria-labelledby="tab-5">
+          <div class="section-header">
+            <div class="section-icon">📈</div>
+            <div>
+              <h3 style="margin:0">Economic development</h3>
+              <div class="small">Living standards, poverty, HDI, strategies for growth and sustainability.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:8px 0">Study points</h4>
+            <ul>
+              <li>Differences in living standards between countries</li>
+              <li>Causes and consequences of poverty</li>
+              <li>Development strategies and indicators (HDI)</li>
+              <li>Sustainable development considerations</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="panel-6" class="card content-section" role="tabpanel" aria-labelledby="tab-6">
+          <div class="section-header">
+            <div class="section-icon">🌐</div>
+            <div>
+              <h3 style="margin:0">International trade & globalisation</h3>
+              <div class="small">Advantages of trade, comparative advantage, exchange rates and protectionism.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:8px 0">Topics to cover</h4>
+            <ul>
+              <li>Specialisation and gains from trade</li>
+              <li>Absolute & comparative advantage</li>
+              <li>Protectionism: tariffs, quotas, subsidies</li>
+              <li>Exchange rates and balance of payments basics</li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+
+      <aside class="card sidebar">
+        <div class="box">
+          <strong>Resources</strong>
+          <div class="small" style="margin-top:8px">Links to past papers, examiner reports and teacher support can be added here.</div>
+        </div>
+        <div class="box">
+          <strong>Quick tips</strong>
+          <div class="small" style="margin-top:8px">Encourage students to practise data response questions and to link theory to real-world examples.</div>
+        </div>
+        <div class="box">
+          <strong>Contact</strong>
+          <div class="small" style="margin-top:8px">Course lead: <a class="link" href="mailto:teacher@example.com">teacher@example.com</a></div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      © IGCSE Economics — Course portal • Built as a responsive demo. Syllabus source: Cambridge International (2026).
+    </footer>
+  </div>
+
+  <script>
+    // Simple accessible tabs behaviour
+    (function(){
+      const tabs = Array.from(document.querySelectorAll('.tab-btn'));
+      const panels = Array.from(document.querySelectorAll('.content-section'));
+
+      function activateTab(index, setFocus){
+        tabs.forEach((t,i)=>{
+          const selected = i===index;
+          t.setAttribute('aria-selected', selected? 'true':'false');
+        });
+        panels.forEach((p,i)=>{
+          p.classList.toggle('active', i===index);
+        });
+        if(setFocus) tabs[index].focus();
+      }
+
+      tabs.forEach((btn, i)=>{
+        btn.addEventListener('click', ()=> activateTab(i, false));
+        btn.addEventListener('keydown', (e)=>{
+          if(e.key==='ArrowRight'){
+            activateTab((i+1)%tabs.length, true);
+            e.preventDefault();
+          } else if(e.key==='ArrowLeft'){
+            activateTab((i-1+tabs.length)%tabs.length, true);
+            e.preventDefault();
+          }
+        });
+      });
+
+      // Start Learning button -> open first tab panel and scroll
+      document.getElementById('startLearning').addEventListener('click', ()=>{
+        activateTab(0,true);
+        document.getElementById('panel-1').scrollIntoView({behavior:'smooth',block:'start'});
+      });
+
+      // ensure first tab selected
+      activateTab(0,false);
+    })();
+  </script>
+</body>
+</html>
